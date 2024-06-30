@@ -47,3 +47,10 @@ class Get {
     return Theme.of(Get.currentContext);
   }
 }
+
+extension ChangeNotifierExtension on State {
+  update() {
+    // ignore: invalid_use_of_visible_for_testing_member, unnecessary_this, invalid_use_of_protected_member
+    this.setState(() {});
+  }
+}

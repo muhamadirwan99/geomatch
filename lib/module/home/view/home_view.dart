@@ -35,7 +35,7 @@ class HomeView extends StatefulWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              // playSoundSfx("audio/button.mp3");
+                              playSoundSfx("audio/button.mp3");
 
                               exit(0);
                             },
@@ -60,10 +60,8 @@ class HomeView extends StatefulWidget {
                       const Spacer(),
                       InkWell(
                         onTap: () {
-                          // playSoundSfx("audio/button.mp3");
-                          // showDialog(
-                          //     context: context,
-                          //     builder: (context) => const DialogKesulitan());
+                          playSoundSfx("audio/button.mp3");
+                          Get.to(const InGameView());
                         },
                         child: SvgPicture.asset(
                           "assets/button/ayo_main.svg",
