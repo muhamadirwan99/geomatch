@@ -91,7 +91,7 @@ class _Soal1State extends State<Soal1> {
                         ),
                         onDragCompleted: () {
                           setState(() {
-                            if (widget.controller.isPlaced[widget.controller
+                            if (widget.controller.isPlacedPura[widget.controller
                                     .listJawabanPura[index].number] ==
                                 true) {
                               widget.controller.listJawabanPura.removeAt(index);

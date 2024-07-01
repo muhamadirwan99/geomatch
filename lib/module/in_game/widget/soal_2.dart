@@ -25,10 +25,14 @@ class _Soal2State extends State<Soal2> {
         children: [
           Stack(
             children: [
-              Image.asset(
-                "assets/images/soal/tari_pendet_blank.png",
+              SizedBox(
+                width: 210,
+                height: 201,
+                child: Image.asset(
+                  "assets/images/soal/tari_pendet_blank.png",
+                ),
               ),
-              ...widget.controller.buildDragTargets(setState),
+              ...widget.controller.buildDragTargetsSoal2(widget.setState),
             ],
           ),
           SizedBox(
@@ -55,7 +59,7 @@ class _Soal2State extends State<Soal2> {
                       children: [
                         Expanded(
                           child: Text(
-                            "Ayo susun bangunan Pura tersebut yang terdiri dari beberapa bentuk Gabungan geometri",
+                            "Susunlah tangram berikut hingga menjadi pola tari pendet!",
                             style: GoogleFonts.boogaloo(
                               color: Colors.white,
                               fontSize: 12,
@@ -63,6 +67,11 @@ class _Soal2State extends State<Soal2> {
                           ),
                         ),
                         InkWell(
+                          onTap: () {
+                            playSoundSfx(
+                              "audio/tari_pendet/susun_tangram.mp3",
+                            );
+                          },
                           child: SvgPicture.asset(
                             "assets/icons/volume.svg",
                           ),
@@ -74,33 +83,39 @@ class _Soal2State extends State<Soal2> {
                 const SizedBox(
                   height: 12.0,
                 ),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: List.generate(
-                    widget.controller.listJawabanPura.length,
-                    (index) {
-                      return Draggable<int>(
-                        data: widget.controller.listJawabanPura[index].number,
-                        feedback: SizedBox(
-                          child: SvgPicture.asset(
-                            widget.controller.listJawabanPura[index].imagePath,
+                SizedBox(
+                  child: Wrap(
+                    children: List.generate(
+                      widget.controller.listJawabanPendet.length,
+                      (index) {
+                        return Draggable<int>(
+                          data:
+                              widget.controller.listJawabanPendet[index].number,
+                          feedback: SizedBox(
+                            child: SvgPicture.asset(
+                              widget.controller.listJawabanPendet[index]
+                                  .imagePath,
+                            ),
                           ),
-                        ),
-                        onDragCompleted: () {
-                          setState(() {
-                            if (widget.controller.isPlaced[widget.controller
-                                    .listJawabanPura[index].number] ==
-                                true) {
-                              widget.controller.listJawabanPura.removeAt(index);
-                            }
-                          });
-                        },
-                        child: SvgPicture.asset(
-                          widget.controller.listJawabanPura[index].imagePath,
-                        ),
-                      );
-                    },
+                          onDragCompleted: () {
+                            setState(() {
+                              if (widget.controller.isPlacedPendet[widget
+                                      .controller
+                                      .listJawabanPendet[index]
+                                      .number] ==
+                                  true) {
+                                widget.controller.listJawabanPendet
+                                    .removeAt(index);
+                              }
+                            });
+                          },
+                          child: SvgPicture.asset(
+                            widget
+                                .controller.listJawabanPendet[index].imagePath,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
