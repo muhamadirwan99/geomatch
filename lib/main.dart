@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       //     ],
       //   );
       // },
-      title: 'Math Fun Zone',
+      title: 'Geomatch',
       navigatorKey: Get.navigatorKey,
       theme: ThemeData(
         useMaterial3: false,

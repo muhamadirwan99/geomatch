@@ -1,7 +1,8 @@
 {
     "modules": [
         "home",
-        "in_game"
+        "in_game",
+        "credit"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,

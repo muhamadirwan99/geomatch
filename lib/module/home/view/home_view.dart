@@ -32,6 +32,7 @@ class HomeView extends StatefulWidget {
                     children: [
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
                             onTap: () {
@@ -43,17 +44,17 @@ class HomeView extends StatefulWidget {
                               "assets/button/keluar.svg",
                             ),
                           ),
-                          Expanded(
-                            child: Container(),
-                          ),
                           SvgPicture.asset(
                             "assets/images/logo.svg",
                           ),
-                          Expanded(
-                            child: Container(),
-                          ),
-                          const SizedBox(
-                            width: 60,
+                          InkWell(
+                            onTap: () {
+                              playSoundSfx("audio/button.mp3");
+                              Get.to(const CreditView());
+                            },
+                            child: SvgPicture.asset(
+                              "assets/button/info_icon.svg",
+                            ),
                           ),
                         ],
                       ),

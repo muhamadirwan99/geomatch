@@ -4,6 +4,9 @@ If there is a conflicting class name in this file,
 it means you have to rename it to something more unique.
 */
 export 'package:geomatch/core_package.dart';
+export 'package:geomatch/module/credit/controller/credit_controller.dart';
+export 'package:geomatch/module/credit/view/credit_view.dart';
+export 'package:geomatch/module/credit/widget/data_credit.dart';
 export 'package:geomatch/module/home/controller/home_controller.dart';
 export 'package:geomatch/module/home/view/home_view.dart';
 export 'package:geomatch/module/in_game/controller/in_game_controller.dart';

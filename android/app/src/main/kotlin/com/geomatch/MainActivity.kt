@@ -1,4 +1,4 @@
-package com.example.geomatch
+package com.geomatch
 
 import io.flutter.embedding.android.FlutterActivity
 
