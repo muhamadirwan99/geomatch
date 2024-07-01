@@ -200,12 +200,12 @@ class InGameController extends State<InGameView> {
                   angle: angle ?? 0,
                   child: ClipPath(
                     clipper: clipper,
-                    child: Container(
+                    child: SizedBox(
                       width: sizePlaceholder.width,
                       height: sizePlaceholder.height,
-                      color: isPlacedPendet[number] == true
-                          ? Colors.blue
-                          : Colors.pink,
+                      // color: isPlacedPendet[number] == true
+                      //     ? Colors.blue
+                      //     : Colors.pink,
                     ),
                   ),
                 );
