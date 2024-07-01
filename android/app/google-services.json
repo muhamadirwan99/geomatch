@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "548189532207",
+    "project_id": "geomatch-b3542",
+    "storage_bucket": "geomatch-b3542.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548189532207:android:ba81a52c70706f068dd6da",
+        "android_client_info": {
+          "package_name": "com.geomatch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtRkE4LduNRUCnh8PDHzjovTriNrw6wdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
