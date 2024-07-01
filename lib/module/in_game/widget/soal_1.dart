@@ -24,8 +24,8 @@ class _Soal1State extends State<Soal1> {
         children: [
           Stack(
             children: [
-              Image.asset(
-                "assets/images/soal/pura_blank.png",
+              SvgPicture.asset(
+                "assets/images/soal/pura_blank.svg",
               ),
               ...widget.controller.buildDragTargets(widget.setState),
             ],

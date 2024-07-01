@@ -22,7 +22,6 @@ class InGameController extends State<InGameView> {
     JawabanModel(imagePath: 'assets/images/jawaban/pura/8.svg', number: 8),
     JawabanModel(imagePath: 'assets/images/jawaban/pura/9.svg', number: 9),
     JawabanModel(imagePath: 'assets/images/jawaban/pura/10.svg', number: 10),
-    JawabanModel(imagePath: 'assets/images/jawaban/pura/11.svg', number: 11),
   ];
 
   List<JawabanModel> listJawabanPendet = [
@@ -35,7 +34,6 @@ class InGameController extends State<InGameView> {
     JawabanModel(imagePath: 'assets/images/jawaban/pendet/7.svg', number: 7),
     JawabanModel(imagePath: 'assets/images/jawaban/pendet/8.svg', number: 8),
     JawabanModel(imagePath: 'assets/images/jawaban/pendet/9.svg', number: 9),
-    JawabanModel(imagePath: 'assets/images/jawaban/pendet/10.svg', number: 10),
   ];
 
   bool isGestureActive = false;
@@ -69,7 +67,7 @@ class InGameController extends State<InGameView> {
           return SizedBox(
             width: size.width,
             height: size.height,
-            // color: isPlaced[number] == true ? Colors.blue : Colors.green,
+            // color: isPlacedPura[number] == true ? Colors.blue : Colors.green,
             child: isPlacedPura[number] == true
                 ? SvgPicture.asset(
                     "assets/images/jawaban/pura/$number.svg",
@@ -88,6 +86,7 @@ class InGameController extends State<InGameView> {
 
           if (listJawabanPura
               .every((element) => isPlacedPura[element.number] == true)) {
+            playSoundSfx("audio/modal/jawaban_benar.mp3");
             await showDialog(
               context: context,
               builder: (context) => DialogBenarGambar(
@@ -107,15 +106,9 @@ class InGameController extends State<InGameView> {
   List<Widget> buildDragTargets(StateSetter setState) {
     return [
       buildDragTarget(
-        11,
-        const Offset(100, 0),
-        const Size(10, 12),
-        setState,
-      ),
-      buildDragTarget(
         10,
-        const Offset(94, 10),
-        const Size(22, 14),
+        const Offset(94, 0),
+        const Size(22, 25),
         setState,
       ),
       buildDragTarget(
@@ -207,12 +200,12 @@ class InGameController extends State<InGameView> {
                   angle: angle ?? 0,
                   child: ClipPath(
                     clipper: clipper,
-                    child: SizedBox(
+                    child: Container(
                       width: sizePlaceholder.width,
                       height: sizePlaceholder.height,
-                      // color: isPlacedPendet[number] == true
-                      //     ? Colors.blue
-                      //     : Colors.black,
+                      color: isPlacedPendet[number] == true
+                          ? Colors.blue
+                          : Colors.pink,
                     ),
                   ),
                 );
@@ -227,6 +220,8 @@ class InGameController extends State<InGameView> {
 
                 if (listJawabanPendet.every(
                     (element) => isPlacedPendet[element.number] == true)) {
+                  playSoundSfx("audio/modal/jawaban_benar.mp3");
+
                   await showDialog(
                     context: context,
                     builder: (context) => DialogBenarGambar(
@@ -246,7 +241,7 @@ class InGameController extends State<InGameView> {
   List<Widget> buildDragTargetsSoal2(StateSetter setState) {
     return [
       buildDragTargetSoal2(
-        number: 10,
+        number: 9,
         position: const Offset(77, 0),
         positionPlaceholder: const Offset(86, 9),
         size: const Size(58.56, 58.68),
@@ -255,23 +250,13 @@ class InGameController extends State<InGameView> {
         angle: 0.89,
       ),
       buildDragTargetSoal2(
-        number: 9,
-        position: const Offset(78, 40),
-        positionPlaceholder: const Offset(77, 46),
-        size: const Size(25.7, 27.52),
-        sizePlaceholder: const Size(26, 13),
-        setState: setState,
-        angle: 0.89,
-      ),
-      buildDragTargetSoal2(
         number: 8,
-        position: const Offset(74, 48),
-        positionPlaceholder: const Offset(76, 49),
-        size: const Size(18.28, 33.52),
-        sizePlaceholder: const Size(18, 33),
+        position: const Offset(74, 40),
+        positionPlaceholder: const Offset(76, 40),
+        size: const Size(28.97, 42.05),
+        sizePlaceholder: const Size(22, 33),
         setState: setState,
         // clipper: NumberTwoClipper(),
-        angle: 3.2,
       ),
       buildDragTargetSoal2(
         number: 7,
@@ -371,7 +356,7 @@ class InGameController extends State<InGameView> {
           image: 'assets/images/soal/tari_pendet.png',
           soal: 'Ada berapa jumlah segitiga pada tangram tersebut?',
           audioSoal: 'audio/tari_pendet/segitiga.mp3',
-          jawaban: '6',
+          jawaban: '5',
         );
       case 5:
         return _soalDrawing(
@@ -389,7 +374,7 @@ class InGameController extends State<InGameView> {
           image: 'assets/images/soal/poleng.png',
           soal: 'Ada berapa jumlah persegi berwarna hitam pada kain poleng?',
           audioSoal: 'audio/kain_poleng/persegi_hitam.mp3',
-          jawaban: '9',
+          jawaban: '4',
         );
       case 7:
         return _soalDrawing(
@@ -398,7 +383,7 @@ class InGameController extends State<InGameView> {
           image: 'assets/images/soal/poleng.png',
           soal: 'Ada berapa jumlah persegi berwarna putih pada kain poleng?',
           audioSoal: 'audio/kain_poleng/persegi_putih.mp3',
-          jawaban: '4',
+          jawaban: '1',
         );
       case 8:
         return _soalDrawing(
@@ -407,7 +392,7 @@ class InGameController extends State<InGameView> {
           image: 'assets/images/soal/poleng.png',
           soal: 'Berapa jumlah persegi pada kain poleng keseluruhan?',
           audioSoal: 'audio/kain_poleng/keseluruhan.mp3',
-          jawaban: '25',
+          jawaban: '9',
         );
       default:
         Container();
@@ -449,10 +434,16 @@ class InGameController extends State<InGameView> {
           recognizedText = "9";
         }
 
+        if (recognizedText == "l" || recognizedText == "I" && answer == "1") {
+          recognizedText = "1";
+        }
+
         Get.back();
 
         if (recognizedText == answer) {
           if (indexSoal < 8) {
+            playSoundSfx("audio/modal/jawaban_benar.mp3");
+
             playSoundSfx("audio/modal/benar.mp3");
 
             clearPad();
@@ -467,6 +458,8 @@ class InGameController extends State<InGameView> {
               },
             );
           } else {
+            playSoundSfx("audio/modal/materi_selesai.mp3");
+
             showDialog(
               context: context,
               builder: (context) {
@@ -475,6 +468,8 @@ class InGameController extends State<InGameView> {
             );
           }
         } else {
+          playSoundSfx("audio/modal/jawaban_salah.mp3");
+
           playSoundSfx("audio/modal/salah.mp3");
 
           showDialog(
@@ -577,8 +572,10 @@ _soalDrawing({
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       SizedBox(
+        height: 210,
         child: Image.asset(
           image,
+          fit: BoxFit.cover,
         ),
       ),
       SizedBox(

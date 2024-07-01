@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:geomatch/core.dart';
-import 'package:geomatch/core_package.dart';
-import '../controller/credit_controller.dart';
 
 class CreditView extends StatefulWidget {
   const CreditView({super.key});
