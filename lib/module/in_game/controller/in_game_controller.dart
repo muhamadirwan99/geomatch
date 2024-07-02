@@ -21,7 +21,6 @@ class InGameController extends State<InGameView> {
     JawabanModel(imagePath: 'assets/images/jawaban/pura/7.svg', number: 7),
     JawabanModel(imagePath: 'assets/images/jawaban/pura/8.svg', number: 8),
     JawabanModel(imagePath: 'assets/images/jawaban/pura/9.svg', number: 9),
-    JawabanModel(imagePath: 'assets/images/jawaban/pura/10.svg', number: 10),
   ];
 
   List<JawabanModel> listJawabanPendet = [
@@ -106,15 +105,9 @@ class InGameController extends State<InGameView> {
   List<Widget> buildDragTargets(StateSetter setState) {
     return [
       buildDragTarget(
-        10,
-        const Offset(94, 0),
-        const Size(22, 25),
-        setState,
-      ),
-      buildDragTarget(
         9,
-        const Offset(71, 24),
-        const Size(67, 19),
+        const Offset(71, 16),
+        const Size(67, 28),
         setState,
       ),
       buildDragTarget(
@@ -336,11 +329,38 @@ class InGameController extends State<InGameView> {
           setState: setState,
         );
       case 2:
+        return _soalDrawing(
+          setState: setState,
+          controller: controller,
+          image: 'assets/images/soal/pura.svg',
+          soal: 'Ada berapa jumlah trapesium pada pura tersebut?',
+          audioSoal: 'audio/pura/trapesium.mp3',
+          jawaban: '4',
+        );
+      case 3:
+        return _soalDrawing(
+          setState: setState,
+          controller: controller,
+          image: 'assets/images/soal/pura.svg',
+          soal: 'Ada berapa jumlah persegi panjang pada pura tersebut?',
+          audioSoal: 'audio/pura/persegi_panjang_pura.mp3',
+          jawaban: '4',
+        );
+      case 4:
+        return _soalDrawing(
+          setState: setState,
+          controller: controller,
+          image: 'assets/images/soal/pura.svg',
+          soal: 'Ada berapa jumlah segitiga pada pura tersebut?',
+          audioSoal: 'audio/pura/segitiga.mp3',
+          jawaban: '1',
+        );
+      case 5:
         return Soal2(
           controller: controller,
           setState: setState,
         );
-      case 3:
+      case 6:
         return _soalDrawing(
           setState: setState,
           controller: controller,
@@ -349,7 +369,7 @@ class InGameController extends State<InGameView> {
           audioSoal: 'audio/tari_pendet/persegi.mp3',
           jawaban: '2',
         );
-      case 4:
+      case 7:
         return _soalDrawing(
           setState: setState,
           controller: controller,
@@ -358,7 +378,7 @@ class InGameController extends State<InGameView> {
           audioSoal: 'audio/tari_pendet/segitiga.mp3',
           jawaban: '5',
         );
-      case 5:
+      case 8:
         return _soalDrawing(
           setState: setState,
           controller: controller,
@@ -367,7 +387,7 @@ class InGameController extends State<InGameView> {
           audioSoal: 'audio/tari_pendet/persegi_panjang.mp3',
           jawaban: '1',
         );
-      case 6:
+      case 9:
         return _soalDrawing(
           setState: setState,
           controller: controller,
@@ -376,7 +396,7 @@ class InGameController extends State<InGameView> {
           audioSoal: 'audio/kain_poleng/persegi_hitam.mp3',
           jawaban: '4',
         );
-      case 7:
+      case 10:
         return _soalDrawing(
           setState: setState,
           controller: controller,
@@ -385,7 +405,7 @@ class InGameController extends State<InGameView> {
           audioSoal: 'audio/kain_poleng/persegi_putih.mp3',
           jawaban: '1',
         );
-      case 8:
+      case 11:
         return _soalDrawing(
           setState: setState,
           controller: controller,
@@ -441,7 +461,7 @@ class InGameController extends State<InGameView> {
         Get.back();
 
         if (recognizedText == answer) {
-          if (indexSoal < 8) {
+          if (indexSoal < 11) {
             playSoundSfx("audio/modal/jawaban_benar.mp3");
 
             playSoundSfx("audio/modal/benar.mp3");
@@ -573,10 +593,15 @@ _soalDrawing({
     children: [
       SizedBox(
         height: 210,
-        child: Image.asset(
-          image,
-          fit: BoxFit.cover,
-        ),
+        child: image.contains(".svg")
+            ? SvgPicture.asset(
+                image,
+                fit: BoxFit.cover,
+              )
+            : Image.asset(
+                image,
+                fit: BoxFit.cover,
+              ),
       ),
       SizedBox(
         width: 300,
