@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:geomatch/core.dart';
 
 class InGameView extends StatefulWidget {
-  const InGameView({super.key});
+  final String kdSoal;
+
+  const InGameView({
+    super.key,
+    required this.kdSoal,
+  });
 
   Widget build(context, InGameController controller) {
     controller.view = this;
@@ -45,6 +50,7 @@ class InGameView extends StatefulWidget {
                             InkWell(
                               onTap: () async {
                                 playSoundSfx("audio/button.mp3");
+                                Navigator.pop(context);
                                 Navigator.pop(context);
                               },
                               child: SvgPicture.asset(

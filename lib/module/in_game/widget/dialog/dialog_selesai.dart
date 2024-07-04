@@ -52,6 +52,7 @@ class _DialogSelesaiState extends State<DialogSelesai> {
                   playSoundSfx("audio/button.mp3");
                   Get.back();
                   Get.back();
+                  Get.back();
                 },
                 child: SvgPicture.asset(
                   "assets/button/home.svg",

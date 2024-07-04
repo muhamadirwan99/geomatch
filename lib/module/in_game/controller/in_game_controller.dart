@@ -324,70 +324,6 @@ class InGameController extends State<InGameView> {
   switchSoal(int index, StateSetter setState, InGameController controller) {
     switch (index) {
       case 1:
-        return Soal1(
-          controller: controller,
-          setState: setState,
-        );
-      case 2:
-        return _soalDrawing(
-          setState: setState,
-          controller: controller,
-          image: 'assets/images/soal/pura.svg',
-          soal: 'Ada berapa jumlah trapesium pada pura tersebut?',
-          audioSoal: 'audio/pura/trapesium.mp3',
-          jawaban: '4',
-        );
-      case 3:
-        return _soalDrawing(
-          setState: setState,
-          controller: controller,
-          image: 'assets/images/soal/pura.svg',
-          soal: 'Ada berapa jumlah persegi panjang pada pura tersebut?',
-          audioSoal: 'audio/pura/persegi_panjang_pura.mp3',
-          jawaban: '4',
-        );
-      case 4:
-        return _soalDrawing(
-          setState: setState,
-          controller: controller,
-          image: 'assets/images/soal/pura.svg',
-          soal: 'Ada berapa jumlah segitiga pada pura tersebut?',
-          audioSoal: 'audio/pura/segitiga.mp3',
-          jawaban: '1',
-        );
-      case 5:
-        return Soal2(
-          controller: controller,
-          setState: setState,
-        );
-      case 6:
-        return _soalDrawing(
-          setState: setState,
-          controller: controller,
-          image: 'assets/images/soal/tari_pendet.png',
-          soal: 'Ada berapa jumlah persegi pada tangram tersebut?',
-          audioSoal: 'audio/tari_pendet/persegi.mp3',
-          jawaban: '2',
-        );
-      case 7:
-        return _soalDrawing(
-          setState: setState,
-          controller: controller,
-          image: 'assets/images/soal/tari_pendet.png',
-          soal: 'Ada berapa jumlah segitiga pada tangram tersebut?',
-          audioSoal: 'audio/tari_pendet/segitiga.mp3',
-          jawaban: '5',
-        );
-      case 8:
-        return _soalDrawing(
-          setState: setState,
-          controller: controller,
-          image: 'assets/images/soal/tari_pendet.png',
-          soal: 'Ada berapa jumlah persegi panjang pada tangram tersebut?',
-          audioSoal: 'audio/tari_pendet/persegi_panjang.mp3',
-          jawaban: '1',
-        );
-      case 9:
         return _soalDrawing(
           setState: setState,
           controller: controller,
@@ -396,7 +332,7 @@ class InGameController extends State<InGameView> {
           audioSoal: 'audio/kain_poleng/persegi_hitam.mp3',
           jawaban: '4',
         );
-      case 10:
+      case 2:
         return _soalDrawing(
           setState: setState,
           controller: controller,
@@ -405,7 +341,7 @@ class InGameController extends State<InGameView> {
           audioSoal: 'audio/kain_poleng/persegi_putih.mp3',
           jawaban: '1',
         );
-      case 11:
+      case 3:
         return _soalDrawing(
           setState: setState,
           controller: controller,
@@ -413,6 +349,70 @@ class InGameController extends State<InGameView> {
           soal: 'Berapa jumlah persegi pada kain poleng keseluruhan?',
           audioSoal: 'audio/kain_poleng/keseluruhan.mp3',
           jawaban: '9',
+        );
+      case 4:
+        return Soal1(
+          controller: controller,
+          setState: setState,
+        );
+      case 5:
+        return _soalDrawing(
+          setState: setState,
+          controller: controller,
+          image: 'assets/images/soal/pura.svg',
+          soal: 'Ada berapa jumlah trapesium pada pura tersebut?',
+          audioSoal: 'audio/pura/trapesium.mp3',
+          jawaban: '4',
+        );
+      case 6:
+        return _soalDrawing(
+          setState: setState,
+          controller: controller,
+          image: 'assets/images/soal/pura.svg',
+          soal: 'Ada berapa jumlah persegi panjang pada pura tersebut?',
+          audioSoal: 'audio/pura/persegi_panjang_pura.mp3',
+          jawaban: '4',
+        );
+      case 7:
+        return _soalDrawing(
+          setState: setState,
+          controller: controller,
+          image: 'assets/images/soal/pura.svg',
+          soal: 'Ada berapa jumlah segitiga pada pura tersebut?',
+          audioSoal: 'audio/pura/segitiga.mp3',
+          jawaban: '1',
+        );
+      case 8:
+        return Soal2(
+          controller: controller,
+          setState: setState,
+        );
+      case 9:
+        return _soalDrawing(
+          setState: setState,
+          controller: controller,
+          image: 'assets/images/soal/tari_pendet.png',
+          soal: 'Ada berapa jumlah persegi pada tangram tersebut?',
+          audioSoal: 'audio/tari_pendet/persegi.mp3',
+          jawaban: '2',
+        );
+      case 10:
+        return _soalDrawing(
+          setState: setState,
+          controller: controller,
+          image: 'assets/images/soal/tari_pendet.png',
+          soal: 'Ada berapa jumlah segitiga pada tangram tersebut?',
+          audioSoal: 'audio/tari_pendet/segitiga.mp3',
+          jawaban: '5',
+        );
+      case 11:
+        return _soalDrawing(
+          setState: setState,
+          controller: controller,
+          image: 'assets/images/soal/tari_pendet.png',
+          soal: 'Ada berapa jumlah persegi panjang pada tangram tersebut?',
+          audioSoal: 'audio/tari_pendet/persegi_panjang.mp3',
+          jawaban: '1',
         );
       default:
         Container();
@@ -525,9 +525,24 @@ class InGameController extends State<InGameView> {
     Get.back();
   }
 
+  switchIndexSoal(String kdSoal) {
+    switch (kdSoal) {
+      case "mudah":
+        indexSoal = 1;
+        break;
+      case "sedang":
+        indexSoal = 4;
+      case "sulit":
+        indexSoal = 8;
+      default:
+        indexSoal = 1;
+    }
+  }
+
   @override
   void initState() {
     instance = this;
+    switchIndexSoal(widget.kdSoal);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       downloadModel();
     });

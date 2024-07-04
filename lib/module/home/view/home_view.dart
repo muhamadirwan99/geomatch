@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:geomatch/core.dart';
+import 'package:geomatch/module/home/widget/dialog_metode.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -62,7 +63,12 @@ class HomeView extends StatefulWidget {
                       InkWell(
                         onTap: () {
                           playSoundSfx("audio/button.mp3");
-                          Get.to(const InGameView());
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const DialogMetode();
+                            },
+                          );
                         },
                         child: SvgPicture.asset(
                           "assets/button/ayo_main.svg",
